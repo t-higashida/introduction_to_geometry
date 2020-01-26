@@ -1,0 +1,265 @@
+\chapter{群}
+
+本章では，本書を通して用いられる集合や写像に関する定義や性質を述べ，
+更に，第４章以降で必要となる群を中心として代数的な概念を準備する．
+
+\section{集合と写像}
+初めに，集合と写像に関して基本的な事柄をまとめておく．
+属しているかどうかがはっきりしているものの集まりを\textbf{集合}といい，集合を構成しているものを
+\textbf{元}または\textbf{要素}という．$a$が集合$M$の元であることを
+\[
+	a	\in	M	\quad	(M	\ni	a)
+\]
+と書く．$a$は集合$M$の元ではないことを$a	\not\in	M$と書く．
+
+集合$N$の元はすべて集合$M$の元であるとき，集合$N$は集合$M$の\textbf{部分集合}であるといい，
+\[
+	N	\subset	M	\quad	(M	\supset	N)
+\]
+と書く．$N$は$M$の部分集合ではないことを$N	\not\subset	M$と書く．
+
+$N	\subset	M$かつ$N	\supset	M$のとき，$N=M$と書き，集合$N$と集合$M$は\textbf{等しい}という．
+
+$a_1,a_2,\cdots$を元とする集合を$\{a_1,a_2,\cdots\}$と表す．
+$x$に関する条件$P(x)$を満たす$x$の集合を$\{	x	\:	|	\:	P(x)	\}$と表す．
+
+$\Lambda$を添え字の集合とする．$M_\lambda	\:	(\lambda	\in	\Lambda)$が集合のとき，集合
+\begin{align*}
+	\bigcup_{\lambda	\in	\Lambda}M_\lambda
+		&=	\{	x	\:	|	\:	x	\in	M_\lambda\text{となる$\lambda\in\Lambda$が存在する}	\},	\\
+	\bigcap_{\lambda	\in	\Lambda}M_\lambda
+		&=	\{	x	\:	|	\:	\text{すべての$\lambda\in\Lambda$に対して}	x	\in	M_\lambda	\}	\\
+\end{align*}
+をそれぞれ，$M_\lambda	\:	(\lambda	\in	\Lambda)$の\textbf{和集合}(または\textbf{合併集合})
+，\textbf{共通部分}という．
+
+\定理{１}
+集合$M_\lambda	\:	(\lambda	\in	\Lambda)$，集合$N$に対して，次が成り立つ．
+\begin{list}{}{}
+	\item	（１）$(\bigcup_{\lambda	\in	\Lambda}	M_\lambda)	\cap	N
+								=	\bigcup_{\lambda	\in	\Lambda}	(M_\lambda	\cap	N)$
+	\item	（２）$(\bigcap_{\lambda	\in	\Lambda}	M_\lambda)	\cup	N
+								=	\bigcap_{\lambda	\in	\Lambda}	(M_\lambda	\cup	N)$
+\end{list}
+\証明
+（１）$\forall	x	\in	(\bigcup_{\lambda	\in	\Lambda}	M_\lambda)	\cap	N$とすると
+$x	\in	\bigcup_{\lambda	\in	\Lambda}	M_\lambda$かつ$x	\in	N$．
+よって適当な$\lambda	\in	\Lambda$に対して$x	\in	M_\lambda$かつ$x	\in	N$．
+ゆえに$x	\in	\bigcup_{\lambda	\in	\Lambda}	(M_\lambda	\cap	N)$．
+したがって，$(\bigcup_{\lambda	\in	\Lambda}	M_\lambda)	\cap	N
+								\subset	\bigcup_{\lambda	\in	\Lambda}	(M_\lambda	\cap	N)$．
+
+次に，任意の元$x	\bigcup_{\lambda	\in	\Lambda}	(M_\lambda	\cap	N)$をとると，
+適当な$\lambda	\in	\Lambda$に対して，
+$x	\in	M_\lambda$かつ$x	\in	N$．よって，$x	\bigcup_{\lambda	\in	\Lambda}	M_\lambda$かつ
+$N	\cap	N$．ゆえに，$x	\in	(\bigcup_{\lambda	\in	\Lambda}	M_\lambda)	\cap	N$．
+したがって，$(\bigcup_{\lambda	\in	\Lambda}	M_\lambda)	\cap	N
+								\supset	\bigcup_{\lambda	\in	\Lambda}	(M_\lambda	\cap	N)$.
+
+（２）任意の元$x	\in	(\bigcap_{\lambda\in\Lambda}M_\lambda)\cup	N$をとると，
+$x	\in	\bigcap_{\lambda\in\Lambda}M_\lambda$または$x\in	N$．
+よって，すべての$\lambda\in\Lambda$に対して$x\in	M_\lambda$または
+$x	\in	N$．ゆえに，$x	\in	\bigcap_\lambda(M_\lambda	\cup	N)$．
+したがって$(\bigcap_\lambda	M_\lambda)\cup	N	\subset	\bigcap_\lambda	(	M_\lambda	\cup	N)$．
+この証明の逆をたどると
+$(\bigcap_\lambda	M_\lambda)\cup	N	\supset	\bigcap_\lambda	(	M_\lambda	\cup	N)$．
+\■
+$M$，$N$を集合とすると，$M$に属し，$N$に属さない元の全体の集合
+\[
+	M-N	=\{x	\:	|	\:	x	\in	\text{　かつ　}	x	\not\in	N	\}
+\]
+を$M$と$N$の\textbf{差集合}という．集合$A$が集合$M$の部分集合のとき，$M-A$を$M$に関する
+$A$の\textbf{補集合}という．
+
+\定理{２}
+$\varLambda $のすべての元$\lambda$に対しを$A_\lambda \subseteq X$とする．
+次の\textgt{ド・モルガンの法則}が成り立つ．
+
+\begin{list}{}{}
+		\item(１)　$X-\bigcup_{\lambda\in\varLambda}A_{\lambda}=\bigcap_{\lambda\in\varLambda}(X-A_{\lambda})$
+		\item(２)　$X-\bigcap_{\lambda\in\varLambda}A_{\lambda}=\bigcup_{\lambda\in\varLambda}(X-A_{\lambda})$
+\end{list}
+\証明
+（１）
+\begin{align*}
+	\forall \in X - \bigcup_{\lambda \in \Lambda} A_\lambda
+		&	\Longleftrightarrow	a \in X \text{　かつ　}	a \notin \bigcup_{\lambda \in \Lambda} A_\lambda	
+			\Longleftrightarrow	a \in X \text{　かつ　}	\forall	\lambda \in \Lambda	\quad	(a	\notin	A_\lambda)	\\
+		&	\Longleftrightarrow	\forall	\lambda \in \Lambda	\quad	(a \in X-A_\lambda)	
+			\Longleftrightarrow	a \in	\bigcap_{\lambda \in \Lambda}	\bigl( X-A_\lambda	\bigl)	\\
+\end{align*}
+（２）
+\begin{align*}
+	\forall \in X - \bigcap_{\lambda \in \Lambda} A_\lambda
+		&	\Longleftrightarrow	a \in X \text{　かつ　}	a \notin \bigcap_{\lambda \in \Lambda} A_\lambda
+			\Longleftrightarrow	a \in X \text{　かつ　}	\exists	\lambda \in \Lambda	\quad	(a	\notin	A_\lambda)	\\
+		&\Longleftrightarrow	\exists	\lambda \in \Lambda	\quad	(a \in X-A_\lambda)
+			\Longleftrightarrow	a \in	\bigcup_{\lambda \in \Lambda}	\bigl( X-A_\lambda	\bigl)	\\
+\end{align*}
+\■
+
+集合$M$，集合$N$の両方に属する元が存在しないとき，
+\[
+	M	\cap	N	=	\varnothing
+\]
+と表し，$M$と$N$は\textbf{互いに素}である（\textbf{交わらない}）という．$\varnothing$を，
+元をもたない集合として，集合の仲間に入れ，\textbf{空集合}と称する．$\varnothing$は
+任意の集合の部分集合と考える．
+
+$M$，$N$を集合とする．$M$の任意の元$x$に対し，$N$の元$f(x)$を一つ定める規則を\textbf{写像}といい，
+\[
+	f:M	\rightarrow	N;x	\mapsto	f(x)
+\]
+と表す．
+
+２つの写像$f:M	\rightarrow	N$，$f:X	\rightarrow	Y$が\textbf{等しい}のは，
+$M=X$，$N=Y$であって，しかもすべての元$x	\in	M$に対して，$f(x)=g(x)$が成り立つときである．
+このとき，$f=g$と書く．
+
+写像$f:M	\rightarrow	N$は，$x,x'	\in	M$に対して，
+$f(x)=f(x')$ならば，$x=x'$となるとき，\textbf{単射}（または，\textbf{中への1対1写像}）
+といわれる．
+
+任意の元$y	\in	M$に対して，$f(x)=y$となる元$x	\in	M$が存在する写像$f:M	\rightarrow	N$は
+\textbf{全射}（または\textbf{上への写像}）といわれる．全射であり，かつ単射である
+写像を\textbf{全単射}（または\textbf{1対1写像}）という．
+
+集合$M$，$N$の間に全単射$f:M	\rightarrow	N$が存在するとき，
+$M$は$N$と\textbf{対等}である，あるいは，$M$と$N$は\textbf{１対１対応}であるという．
+
+ある自然数$n$に対し集合$\{1,2,\cdots,n\}$と対等な集合を$n$個の元から成る\textbf{有限集合}と呼ぶ．
+空集合も特別な場合として有限集合の仲間に含める．有限集合でない集合を\textbf{無限集合}と呼ぶ．
+自然数全体の集合$\N$と対等な集合を\textbf{可算集合}(\textbf{可付番集合})と呼ぶ．
+
+$M,N,L$を集合$f:M	\rightarrow	N$，$g:N	\rightarrow	L$を写像とする．$M$の任意の元$x$に対し，
+$L$の元$g(f(x))$を対応させる写像$f$と$g$の\textbf{合成写像}またた\textbf{合成}といい，
+$g	\circ	f:M	\rightarrow	L$と表す．
+
+\例{１}
+$M$を集合とするとき，すべての元$x	\in	M$に対し，$f(x)=x$によって定まる写像$f:M	\rightarrow	M$
+を\textbf{恒等写像}といい，$id$と表す（identityの略）．$x$に$f(x)$が対応することを
+$x	\mapsto	f(x)$と表すことにすれば，恒等写像は
+\[
+	id:M	\rightarrow	M;x	\mapsto	x
+\]
+と表すことができる．明らかに恒等写像は全単射である．
+
+\例{２}
+$N$を集合$M$の部分集合とするとき，写像
+\[
+	i:N	\rightarrow	M;x	\mapsto	x
+\]
+を\textbf{包含写像}という（$i$はinclusionの略）．明らかに包含写像は単射である．
+
+\例{３}
+$M$，$N$を集合，$y_0	\in	N$を固定された元とするとき，写像
+\[
+	c:M	\rightarrow	N	;	x	\mapsto	y_0
+\]
+を\textbf{定値写像}という($c$はconstantの略）．$N$の1点$y_0$から成る集合$\{y_0\}$
+のときは，$c$は全射である．
+
+\補題{３}
+写像$f:M	\rightarrow	N$，$g:N	\rightarrow	L$の合成写像$g	\circ	f$が単射ならば，
+$f$は単射であり，$g	\circ	f$が全射ならば，$g$は全射である．したがって，
+$g	\circ	f$，$f	\circ	g$がともに全単射ならば，$f$，$g$はともに全単射となる．
+
+\証明
+$g	\circ	f$が単射であるとする．$f(x)=f(x')$（$x,x'	\in	M)$とする仮定すると，
+$(g	\circ	f)(x)=g(f(x))=g(f(x'))=(g\circ	f)(x')$となり，
+$g	\circ	f$が単射であるから，$x=x'$．よって$f$は単射である．
+
+$g	\circ	f$が全射であるとする．$L$の任意の元$y$に対して，$(g	\circ	f)(x)=y$
+を満たす$x	\in	M$が存在する．このとき，$f(x)	\in	N$で$g(f(x))	=	y$であるから，
+$g$は全射である．後半は前半から明らか．
+\■
+
+$f:M	\rightarrow	N$が全単射のとき，任意の元$x	\in	N$に対し，
+$f(y)=x$を満たす元$y	\in	M$が唯一つ存在する．
+$x$に$y$を対応させることによって得られる写像を
+$f^{-1}:N	\rightarrow	M$と表し，$f$の\textbf{逆写像}という．
+明らかに
+\[
+	f^{-1}	\circ	f	=	id:	M	\rightarrow	M	\quad	
+	f	\circ	f^{-1}	=	id:	N	\rightarrow	N
+\]
+が成り立つから，$f^{-1}$も全単射である．
+
+写像$f:M\rightarrow	N$，部分集合$A	\subset	M$，$B	\subset	N$に対し，
+集合
+\[
+	f(A)=\{	f(x)	\:	|	\:	x	\in	A	\},	\quad
+	f^{-1}(B)=\{	x	\:	|	\:	x	\in	M	,	f(x)	\in	B	\}
+\]
+をそれぞれ，$A$の$f$による\textbf{像}，$B$の$f$による\textbf{原像}(または\textbf{逆像})という．
+特に，$f(M)$を$f$の\textbf{像}といい，$\text{Im}\:	f$と書く．明らかに
+\[
+	f\textbf{が全射}	\Longleftrightarrow	f(M)=N
+\]
+が成り立つ．("$\Longleftrightarrow$"は必要十分条件であることを意味する．)
+$y	\in	N$に対し，$f^{-1}(\{y\})$を$f^{-1}(y)$と略記する．
+
+$A$を$M$の部分集合とする．写像$f:	M	\rightarrow	N$に対し，$g(x)=f(x)	\:	(x	\in	A)$によって
+定義される写像
+\[
+	g:A	\rightarrow	N
+\]
+を$g=f|A$で表し，$f$の$A$への\textbf{制限写像}（$f$の\textbf{制限}）という．
+
+\定理{4}
+$f:M	\rightarrow	N$を写像，$A_\lambda	\:	(\lambda	\in	\Lambda)$を$M$の部分集合とするとき，
+次が成り立つ．
+\begin{list}{}{}
+	\item	(1)	$f\left(	\bigcup_{\lambda\in\Lambda}	A_\lambda	\right)=\bigcup_{\lambda\in\Lambda}	f\left(A_\lambda	\right)$
+	\item	(2)	$f\left(	\bigcap_{\lambda\in\Lambda}	A_\lambda	\right)	\subset\bigcap_{\lambda\in\Lambda}	f\left(A_\lambda	\right)$
+\end{list}
+\証明
+(1)　任意の元$y	\in	f\left(	\bigcup_{\lambda\in\Lambda}	A_\lambda	\right)$をとると，
+$y=f(x)	\quad	(x	\in	\bigcup_\lambda	A_\lambda)$であるから，
+ある$\lambda	\in	\Lambda$に対し，$x	\in	A_\lambda$．
+よって$f(x)	\in	f(A_\lambda)$，ゆえに$y=f(x)	\in	\bigcup	f(A_\lambda)$．
+したがって，
+$f(\bigcup_\lambda	A_\lambda)	\subset	\bigcup	f(A_\lambda)$．
+次に，任煮の元$y	\in	\bigcup_\lambda	f(A_\lambda)$をとると，ある$\lambda	\in	\Lambda$
+に対し，$y	\in	f(A_\lambda)$．よって$y=f(x)$となる$x\in	A_\lambda$が存在する．
+ゆえに，$x	\in	\bigcup_\lambda	A_\lambda$．そして，$f(x)	\in	f\left(\bigcup A_\lambda\right)$.
+したがって，$\bigcup	f\left(A_\lambda\right)	\subset	f\left(\bigcup	A_\lambda\right)$.
+
+(2)　任意の元$y\in	f\left(\bigcap	A_\lambda	\right)$をとると，$y=f(x)	\:	(x	\in	\bigcap	A_\lambda)$
+であるから，すべての$\lambda$に対し，$x	\in	A_\lambda$であり，
+$f(x)	\in	f(A_\lambda)$．したがって，$f\left(	\bigcap	A_\lambda	\right)	\subset	\bigcap	f(A_\lambda)$.
+\■
+\定理{5}
+$f:M	\rightarrow	N$を写像，$B_\mu	\:	(\mu	\in	\Gamma)$を$N$の部分集合とするとき，
+次が成り立つ．
+\begin{list}{}{}
+	\item	(1)	$f^{-1}(\bigcup_{\mu	\in	\Gamma}	B_\mu)	=	\bigcup_{\mu	\in	\Gamma}	f^{-1}(B_\mu)$.
+	\item	(2)	$f^{-1}(\bigcap_{\mu	\in	\Gamma}	B_\mu)	=	\bigcap_{\mu	\in	\Gamma}	f^{-1}(B_\mu)$
+\end{list}
+\証明
+(1)　任意の元$x	\in	f^{-1}(\bigcup_\mu)$をとると，$f(x)	\in	\bigcup	B_\mu$.よって，ある
+$\mu$に対し，$f(x)	\in	B_\mu$，すなわち，$x	\in	f^{-1}(B_\mu)$．
+ゆえに$x	\in	\bigcup	f^{-1}(B_\mu)$．したがって，
+$f^{-1}\left(	\bigcup	B_\mu	\right)	\subset	\bigcup	f^{-1}(B_\mu)$．
+この証明の逆をたどれば，$\bigcup	f^{-1}(B_\mu)	\subset	f^{-1}	\left(	B_\mu	\right)$
+
+(2) 任意の元$x	\in	f^{-1}(\bigcap	B_\mu)$をとると，$f(x)	\in	\bigcap	B_\mu$．
+よってすべての$\mu$に対して，$f(x)	\in	B_\mu$，すなわち，
+$x	\in	f^{-1}(B_\mu)$．ゆえに$x	\in	\bigcap	f^{-1}(B_\mu)$．したがって
+$f^{-1}(\bigcap	B_\mu)	\subset	\bigcap	f^{-1}(B_\mu)$．この証明の逆をだどれば
+$\bigcap	f^{-1}(B_\mu)	\subset	f^{-1}(	\bigcap	B_\mu)$.
+\■
+$n$個の集合$M_1,M_2,\cdots	M_n$に対し，それらの\textbf{直積}$M_1	\times	M_2	\times	\cdots	\times	M_n$
+とは集合$\{(x_1,x_2,\cdots,x_n)	\:	|	\:	x_i	\in	M_i	\quad	(i=1,2,\cdots,	n)	\}$
+をいう．
+
+一般に集合$M_\mu	\quad	(\mu	\in	\Gamma	)$が与えられたとき，
+写像$f:	\Gamma	\rightarrow	\bigcup_{\mu	\in	\Gamma}	M_\mu$で，すべての
+$\mu	\in	\Gamma$に対して$f(\mu)	\in	M_\mu$を満たすもの全体の集合を
+集合族$\{M_\mu	\:	|	\:	\mu	\in	\Gamma\}$の\textbf{直積}といい，
+$\Pi_{\mu	\in	\Gamma}	M_\mu$と書く．
+$\Gamma$が$n$個の元からなる集合$\{1,2,\dots,n\}$と一致する場合が
+$M_1	\times	M_2	\times	\cdots	\times	M_n$である．
+$\lambda	\in	\Gamma$に対して，
+写像$p_\lambda	:\Pi_{\mu	\in	\Gamma}	M_\mu	\rightarrow	M_\mu;f	\mapsto	f(\lambda)$
+を$\lambda$座標への\textbf{射影}という．
